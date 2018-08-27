@@ -4,6 +4,45 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Icon from "@material-ui/core/Icon";
 import Typography from "@material-ui/core/Typography";
+import { MailList } from "./";
+
+class InboxTabs extends Component {
+  state = {
+    value: 0
+  };
+
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
+
+  render() {
+    const { classes } = this.props;
+    const { value } = this.state;
+
+    const TabClasses = {
+      root: classes.tabRoot,
+      selected: classes.tabSelected,
+      wrapper: classes.wrapper,
+      label: classes.label,
+      labelContainer: classes.labelContainer,
+      labelIcon: classes.labelIcon
+    };
+
+    return (
+      <div className={classes.root}>
+        <Tabs
+          value={value}
+          onChange={this.handleChange}
+          classes={{ root: classes.tabsRoot, indicator: classes.tabsIndicator }}
+        >
+          <Tab classes={TabClasses} icon={<Icon>inbox</Icon>} label="Primary" />
+          <Tab icon={<Icon>people</Icon>} classes={TabClasses} label="Social" />
+        </Tabs>
+        <MailList />
+      </div>
+    );
+  }
+}
 
 const styles = theme => ({
   root: {
@@ -59,55 +98,5 @@ const styles = theme => ({
     padding: theme.spacing.unit * 3
   }
 });
-
-class InboxTabs extends Component {
-  state = {
-    value: 0
-  };
-
-  handleChange = (event, value) => {
-    this.setState({ value });
-  };
-
-  render() {
-    const { classes } = this.props;
-    const { value } = this.state;
-
-    const TabClasses = {
-      root: classes.tabRoot,
-      selected: classes.tabSelected,
-      wrapper: classes.wrapper,
-      label: classes.label,
-      labelContainer: classes.labelContainer,
-      labelIcon: classes.labelIcon
-    };
-
-    return (
-      <div className={classes.root}>
-        <Tabs
-          value={value}
-          onChange={this.handleChange}
-          classes={{ root: classes.tabsRoot, indicator: classes.tabsIndicator }}
-        >
-          <Tab
-            // disableRipple
-            classes={TabClasses}
-            icon={<Icon>inbox</Icon>}
-            label="Primary"
-          />
-          <Tab
-            // disableRipple
-            icon={<Icon>people</Icon>}
-            classes={TabClasses}
-            label="Social"
-          />
-        </Tabs>
-        <Typography className={classes.typography}>
-          Ant Design UI powered by Material-UI
-        </Typography>
-      </div>
-    );
-  }
-}
 
 export default withStyles(styles)(InboxTabs);
