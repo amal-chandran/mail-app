@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import BaseLayout from "./components/main/BaseLayout";
+import { Router } from "./main";
 
 class App extends Component {
   render() {
-    return <BaseLayout />;
+    return <Router />;
   }
 }
 
