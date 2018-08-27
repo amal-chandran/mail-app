@@ -1,12 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import BaseLayout from "./components/main/BaseLayout";
 
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        Mail App
-      </div>
-    );
+    return <BaseLayout />;
   }
 }
 
