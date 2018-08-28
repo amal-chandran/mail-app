@@ -58,21 +58,10 @@ const styles = theme => ({
   tabRoot: {
     textTransform: "initial",
     minWidth: "13rem",
-    fontWeight: theme.typography.fontWeightRegular,
+    fontWeight: "bold",
     paddingRight: theme.spacing.unit * 2,
     paddingLeft: theme.spacing.unit * 2,
-    fontFamily: [
-      "-apple-system",
-      "BlinkMacSystemFont",
-      '"Segoe UI"',
-      "Roboto",
-      '"Helvetica Neue"',
-      "Arial",
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"'
-    ].join(","),
+    fontFamily: ["sans-serif"].join(","),
     "&:hover": {
       color: "#40a9ff",
       opacity: 1
@@ -89,7 +78,7 @@ const styles = theme => ({
     flexDirection: "row",
     justifyContent: "flex-start"
   },
-  label: { fontWeight: 500 },
+  label: { fontWeight: "bold" },
   labelIcon: { minHeight: "48px" },
   labelContainer: { paddingLeft: "4px" },
 

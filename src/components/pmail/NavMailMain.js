@@ -9,19 +9,13 @@ import Button from "@material-ui/core/Button";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import DraftsIcon from "@material-ui/icons/Drafts";
 import SendIcon from "@material-ui/icons/Send";
+import ComposeMail from "./ComposeMail";
 
 export default class NavMailMain extends Component {
   render() {
     return (
       <div className="mt-3">
-        <Button
-          className="mx-3 pr-4 text-capitalize bg-white"
-          variant="extendedFab"
-        >
-          <Icon>add</Icon>
-          Compose
-        </Button>
-
+        <ComposeMail />
         <ListItemComposition />
       </div>
     );
@@ -35,13 +29,13 @@ function ListItemComposition(props) {
     <MenuList className="mt-3">
       <MenuItem className={classes.menuItem}>
         <ListItemIcon className={classes.icon}>
-          <InboxIcon />
+          <Icon>inbox</Icon>
         </ListItemIcon>
         <ListItemText classes={{ primary: classes.primary }} primary="Inbox" />
       </MenuItem>
       <MenuItem className={classes.menuItem}>
         <ListItemIcon className={classes.icon}>
-          <SendIcon />
+          <Icon>send</Icon>
         </ListItemIcon>
         <ListItemText
           classes={{ primary: classes.primary }}
@@ -50,7 +44,7 @@ function ListItemComposition(props) {
       </MenuItem>
       <MenuItem className={classes.menuItem}>
         <ListItemIcon className={classes.icon}>
-          <DraftsIcon />
+          <Icon>drafts</Icon>
         </ListItemIcon>
         <ListItemText classes={{ primary: classes.primary }} primary="Drafts" />
       </MenuItem>
@@ -73,7 +67,7 @@ const styles = theme => ({
     }
   },
   primary: {},
-  icon: {}
+  icon: { marginLeft: "1rem" }
 });
 
 ListItemComposition = withStyles(styles)(ListItemComposition);
