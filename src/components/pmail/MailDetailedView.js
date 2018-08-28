@@ -1,14 +1,21 @@
 import React, { Component } from "react";
 import { Avatar, IconButton, Icon } from "@material-ui/core";
+import { connect } from "react-redux";
 
 class MailDetailedView extends Component {
   render() {
+    const { match, MailList } = this.props;
+    console.log(match);
+    const { Id } = match.params;
+    const AllListItems = MailList.inbox;
+    const SelectedItem = AllListItems.filter(Item => Item.Id == Id)[0];
+
     return (
       <div>
-        <h3 className="mt-4  ml-5">Hello World</h3>
+        <h3 className="mt-4  ml-5">{SelectedItem.Subject}</h3>
         <div className="d-flex flex-row">
           <div>
-            <Avatar>A</Avatar>
+            <Avatar>{SelectedItem.Name.charAt(0)}</Avatar>
           </div>
           <div className="d-flex flex-column w-100">
             <div className="pl-3">
@@ -31,7 +38,7 @@ class MailDetailedView extends Component {
               </div>
               <div>to me</div>
             </div>
-            <div className="mt-2 ml-3">hello world</div>
+            <div className="mt-2 ml-3">{SelectedItem.Content}</div>
           </div>
         </div>
       </div>
@@ -39,4 +46,9 @@ class MailDetailedView extends Component {
   }
 }
 
-export default MailDetailedView;
+const mapStateToProps = state => {
+  return {
+    MailList: state.MailList
+  };
+};
+export default connect(mapStateToProps)(MailDetailedView);

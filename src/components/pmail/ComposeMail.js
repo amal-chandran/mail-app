@@ -7,6 +7,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { Icon, withStyles, InputAdornment } from "@material-ui/core";
+import { Form, Field } from "react-redux-form";
 
 class ComposeMail extends Component {
   state = {
@@ -99,37 +100,45 @@ class ComposeMailForm extends Component {
     const { toFocus } = this.state;
     return (
       <div>
-        <TextField
-          placeholder={!toFocus ? "Recipients" : ""}
-          className="border-bottom mt-2"
-          fullWidth
-          onFocus={this.handleRecipients}
-          onBlur={this.handleRecipients}
-          InputProps={{
-            disableUnderline: "true",
-            startAdornment: toFocus ? (
-              <InputAdornment position="start">To</InputAdornment>
-            ) : (
-              ""
-            )
-          }}
-        />
-        <TextField
-          placeholder="Subject"
-          className="border-bottom mt-2"
-          fullWidth
-          InputProps={{
-            disableUnderline: "true"
-          }}
-        />
-        <TextField
-          className="mt-2"
-          fullWidth
-          multiline
-          InputProps={{
-            disableUnderline: "true"
-          }}
-        />
+        <Form model={"newMail"}>
+          <Field model="newMail.email">
+            <TextField
+              placeholder={!toFocus ? "Recipients" : ""}
+              className="border-bottom mt-2"
+              fullWidth
+              onFocus={this.handleRecipients}
+              onBlur={this.handleRecipients}
+              InputProps={{
+                disableUnderline: true,
+                startAdornment: toFocus ? (
+                  <InputAdornment position="start">To</InputAdornment>
+                ) : (
+                  ""
+                )
+              }}
+            />
+          </Field>
+          <Field model="newMail.subject">
+            <TextField
+              placeholder="Subject"
+              className="border-bottom mt-2"
+              fullWidth
+              InputProps={{
+                disableUnderline: true
+              }}
+            />
+          </Field>
+          <Field model="newMail.content">
+            <TextField
+              className="mt-2"
+              fullWidth
+              multiline
+              InputProps={{
+                disableUnderline: true
+              }}
+            />
+          </Field>
+        </Form>
       </div>
     );
   }

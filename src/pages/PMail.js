@@ -11,7 +11,6 @@ import { Switch, Route } from "react-router-dom";
 export default class PageMail extends Component {
   render() {
     const { match } = this.props;
-    console.log(match.url);
 
     return (
       <div>

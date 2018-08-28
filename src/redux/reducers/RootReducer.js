@@ -7,9 +7,16 @@ const initUserState = {
   password: ""
 };
 
+const initMailState = {
+  email: "",
+  subject: "",
+  content: ""
+};
+
 export default combineReducers({
   MailList: MailListReducer,
   ...createForms({
-    user: initUserState
+    user: initUserState,
+    newMail: initMailState
   })
 });
