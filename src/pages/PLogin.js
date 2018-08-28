@@ -27,7 +27,7 @@ class PLogin extends Component {
             <p className="font-weight-bold">Member Login</p>
             <div className="text-right">
               <a onClick={this.toggleLoginSignUp}>
-                {page === "Login" ? "SignUp" : "Login"}
+                {page === "Login" ? "Sign Up" : "Login"}
               </a>
             </div>
           </div>
