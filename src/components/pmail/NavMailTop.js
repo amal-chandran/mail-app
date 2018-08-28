@@ -7,7 +7,7 @@ export default class NavMailTop extends Component {
     return (
       <div className="d-flex pt-2 border-bottom justify-content-between">
         <div>
-          <Checkbox defaultChecked color="default" value="checkedG" />
+          <Checkbox color="default" value="checkedG" />
           <IconButton>
             <Icon>refresh</Icon>
           </IconButton>
