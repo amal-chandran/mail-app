@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import BaseLayout from "./BaseLayout";
-import { PMail } from "./../pages";
+import { PMail, PLogin } from "./../pages";
 
 export default class Router extends Component {
   render() {
     return (
       <BaseLayout>
-        <PMail />
+        {/* <PMail /> */}
+        <PLogin />
       </BaseLayout>
     );
   }
