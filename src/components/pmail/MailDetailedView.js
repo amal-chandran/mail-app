@@ -16,7 +16,7 @@ class MailDetailedView extends Component {
                 <div className="font-weight-bold">email</div>
                 <div>
                   <IconButton>
-                    <Icon>forward</Icon>
+                    <Icon>reply</Icon>
                   </IconButton>
                   <IconButton>
                     <Icon>star</Icon>
@@ -25,7 +25,7 @@ class MailDetailedView extends Component {
                     <Icon>delete</Icon>
                   </IconButton>
                   <IconButton>
-                    <Icon>star</Icon>
+                    <Icon>more_vert</Icon>
                   </IconButton>
                 </div>
               </div>

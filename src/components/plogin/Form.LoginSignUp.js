@@ -1,13 +1,48 @@
 import React, { Component } from "react";
 import { Button, FormGroup } from "reactstrap";
-import { Control, Form } from "react-redux-form";
+import { Control, Form, Errors } from "react-redux-form";
+import { isEmpty } from "validator";
+import { connect } from "react-redux";
+import { push } from "connected-react-router";
 
 class FormLoginSignUp extends Component {
+  onFormSubmit = data => {
+    this.props.RedirectPage("/inbox");
+  };
+
   render() {
     const { page } = this.props;
     return (
       <div>
-        <Form model={"user"} className="mt-2">
+        <Form
+          model={"user"}
+          show="touched"
+          validators={{
+            "": {
+              required: vals => {
+                console.log(
+                  vals.email,
+                  isEmpty(vals.email),
+                  vals.password,
+                  isEmpty(vals.password)
+                );
+
+                return !isEmpty(vals.email) && !isEmpty(vals.password);
+              }
+            }
+          }}
+          onSubmit={this.onFormSubmit}
+          className="mt-2"
+        >
+          <Errors
+            className="alert alert-danger"
+            model="user"
+            show={data => data.submitFailed}
+            messages={{
+              required: "Email and password required."
+            }}
+          />
+
           <FormGroup>
             <Control.text
               model={"user.email"}
@@ -41,5 +76,14 @@ class FormLoginSignUp extends Component {
     );
   }
 }
-
-export default FormLoginSignUp;
+const mapDispachToProps = dispach => {
+  return {
+    RedirectPage: data => {
+      dispach(push(data));
+    }
+  };
+};
+export default connect(
+  null,
+  mapDispachToProps
+)(FormLoginSignUp);

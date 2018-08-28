@@ -11,7 +11,8 @@ import { Switch, Route } from "react-router-dom";
 export default class PageMail extends Component {
   render() {
     const { match } = this.props;
-    console.log(match);
+    console.log(match.url);
+
     return (
       <div>
         <Row>
@@ -19,7 +20,7 @@ export default class PageMail extends Component {
             <NavMailMain />
           </Col>
           <Col>
-            <NavMailTop />
+            <NavMailTop match={match} />
             <Switch>
               <Route exact path={`${match.url}`} component={InboxTabs} />
               <Route

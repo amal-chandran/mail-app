@@ -28,6 +28,8 @@ class InboxTabs extends Component {
       labelIcon: classes.labelIcon
     };
 
+    const { match } = this.props;
+
     return (
       <div className={classes.root}>
         <Tabs
@@ -38,7 +40,7 @@ class InboxTabs extends Component {
           <Tab classes={TabClasses} icon={<Icon>inbox</Icon>} label="Primary" />
           <Tab icon={<Icon>people</Icon>} classes={TabClasses} label="Social" />
         </Tabs>
-        <MailList />
+        <MailList match={match} />
       </div>
     );
   }

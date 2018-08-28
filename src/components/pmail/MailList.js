@@ -1,35 +1,55 @@
 import React, { Component } from "react";
 import { ListGroup, ListGroupItem } from "reactstrap";
 import { withStyles, Checkbox, IconButton, Icon } from "@material-ui/core";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class MailList extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes, MailList, match } = this.props;
+
+    const CurrentListItems = MailList.inbox;
+
     return (
       <ListGroup flush>
-        <ListGroupItem
-          className={`${classes.listItem} d-flex align-items-center py-0`}
-          tag="a"
-          href="#"
-        >
-          <div>
-            <Checkbox color="default" value="checkedG" />
-            <IconButton>
-              <Icon>star</Icon>
-            </IconButton>
-          </div>
+        {CurrentListItems.map((ListItem, index) => (
+          <ListGroupItem
+            key={index}
+            className={`${classes.listItem} d-flex align-items-center py-0`}
+            tag={({ children, ...props }) => {
+              return <Link {...props}>{children}</Link>;
+            }}
+            to={`${match.url}/${ListItem.Id}`}
+          >
+            <div>
+              <Checkbox color="default" value="checkedG" />
+              <IconButton>
+                <Icon>star</Icon>
+              </IconButton>
+            </div>
 
-          <div style={{ width: "150px" }}>Name</div>
-          <span className="mx-2" />
-          <div>Subject</div>
-          <span className="mx-2"> - </span>
-          <div>Content</div>
-          <div className={`${classes.listHiddenButton} ml-auto`}>
-            <IconButton>
-              <Icon>delete</Icon>
-            </IconButton>
-          </div>
-        </ListGroupItem>
+            <div style={{ width: "150px" }}>{ListItem.Name}</div>
+            <span className="mx-2" />
+            <span
+              style={{
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                height: "23px",
+                maxWidth: "50%",
+                wordWrap: "normal"
+              }}
+            >
+              <span>{ListItem.Subject}</span>
+              <span className="mx-2"> - </span>
+              <span>{ListItem.Content}</span>
+            </span>
+            <div className={`${classes.listHiddenButton} ml-auto`}>
+              <IconButton>
+                <Icon>delete</Icon>
+              </IconButton>
+            </div>
+          </ListGroupItem>
+        ))}
       </ListGroup>
     );
   }
@@ -53,5 +73,9 @@ const styles = {
     display: "none"
   }
 };
-
-export default withStyles(styles)(MailList);
+const mapStateToProps = state => {
+  return {
+    MailList: state.MailList
+  };
+};
+export default connect(mapStateToProps)(withStyles(styles)(MailList));
