@@ -1,10 +1,17 @@
 import React, { Component } from "react";
 import { Row, Col } from "reactstrap";
-
-import { InboxTabs, NavMailMain, NavMailTop } from "./../components/pmail";
+import {
+  InboxTabs,
+  NavMailMain,
+  NavMailTop,
+  MailDetailedView
+} from "./../components/pmail";
+import { Switch, Route } from "react-router-dom";
 
 export default class PageMail extends Component {
   render() {
+    const { match } = this.props;
+    console.log(match);
     return (
       <div>
         <Row>
@@ -13,7 +20,14 @@ export default class PageMail extends Component {
           </Col>
           <Col>
             <NavMailTop />
-            <InboxTabs />
+            <Switch>
+              <Route exact path={`${match.url}`} component={InboxTabs} />
+              <Route
+                exact
+                path={`${match.url}/:Id`}
+                component={MailDetailedView}
+              />
+            </Switch>
           </Col>
         </Row>
       </div>

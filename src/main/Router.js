@@ -12,7 +12,7 @@ export default class Router extends Component {
         <BaseLayout>
           <Switch>
             <Route exact path="/" component={PLogin} />
-            <Route exact path="/inbox" component={PMail} />
+            <Route path="/inbox" component={PMail} />
           </Switch>
         </BaseLayout>
       </ConnectedRouter>

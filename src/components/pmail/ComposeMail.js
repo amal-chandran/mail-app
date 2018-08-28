@@ -10,7 +10,7 @@ import { Icon, withStyles, InputAdornment } from "@material-ui/core";
 
 class ComposeMail extends Component {
   state = {
-    open: true
+    open: false
   };
 
   handleClickOpen = () => {
@@ -50,7 +50,7 @@ class ComposeMail extends Component {
           <DialogContent>
             <ComposeMailForm />
           </DialogContent>
-          <DialogActions>
+          <DialogActions classes={{ root: classes.DialogActions }}>
             <Button
               variant="raised"
               style={{ boxShadow: "none" }}
@@ -80,6 +80,9 @@ const styles = {
   },
   Paper: {
     height: "100%"
+  },
+  DialogActions: {
+    justifyContent: "space-between"
   }
 };
 
