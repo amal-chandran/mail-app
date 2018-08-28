@@ -3,7 +3,7 @@
 ***
 This is the ui of mail app which is similar to gmail
 
-**Local Developement**
+**Local Development**
 
 Install Node JS >= 8.00 
 
