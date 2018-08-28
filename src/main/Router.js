@@ -6,8 +6,8 @@ export default class Router extends Component {
   render() {
     return (
       <BaseLayout>
-        {/* <PMail /> */}
-        <PLogin />
+        <PMail />
+        {/* <PLogin /> */}
       </BaseLayout>
     );
   }
