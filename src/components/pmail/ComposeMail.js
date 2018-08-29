@@ -12,7 +12,7 @@ import { connect } from "react-redux";
 
 class ComposeMail extends Component {
   state = {
-    open: true
+    open: false
   };
 
   handleClickOpen = () => {
