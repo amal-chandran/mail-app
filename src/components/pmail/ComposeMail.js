@@ -7,11 +7,12 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { Icon, withStyles, InputAdornment } from "@material-ui/core";
-import { Form, Field } from "react-redux-form";
+import { Form, Field, Control } from "react-redux-form";
+import { connect } from "react-redux";
 
 class ComposeMail extends Component {
   state = {
-    open: false
+    open: true
   };
 
   handleClickOpen = () => {
@@ -46,7 +47,7 @@ class ComposeMail extends Component {
             classes={{ root: classes.DialogTitle }}
             id="form-dialog-title"
           >
-            Subscribe
+            {this.props.newMailSubject || "New Message"}
           </DialogTitle>
           <DialogContent>
             <ComposeMailForm />
@@ -87,7 +88,11 @@ const styles = {
   }
 };
 
-export default withStyles(styles)(ComposeMail);
+const mapStateToProps = state => {
+  return { newMailSubject: state.newMail.subject };
+};
+
+export default withStyles(styles)(connect(mapStateToProps)(ComposeMail));
 
 class ComposeMailForm extends Component {
   state = {
@@ -101,43 +106,28 @@ class ComposeMailForm extends Component {
     return (
       <div>
         <Form model={"newMail"}>
-          <Field model="newMail.email">
-            <TextField
-              placeholder={!toFocus ? "Recipients" : ""}
-              className="border-bottom mt-2"
-              fullWidth
-              onFocus={this.handleRecipients}
-              onBlur={this.handleRecipients}
-              InputProps={{
-                disableUnderline: true,
-                startAdornment: toFocus ? (
-                  <InputAdornment position="start">To</InputAdornment>
-                ) : (
-                  ""
-                )
-              }}
+          <div className="form-group mb-0 mt-2">
+            <Control.text
+              style={{ border: "none", boxShadow: "none" }}
+              className="form-control pl-0 border-bottom "
+              model="newMail.email"
+              placeholder="Recipients"
             />
-          </Field>
-          <Field model="newMail.subject">
-            <TextField
+          </div>
+          <div class="form-group">
+            <Control.text
+              style={{ border: "none", boxShadow: "none" }}
+              className="form-control pl-0 border-bottom"
+              model="newMail.subject"
               placeholder="Subject"
-              className="border-bottom mt-2"
-              fullWidth
-              InputProps={{
-                disableUnderline: true
-              }}
             />
-          </Field>
-          <Field model="newMail.content">
-            <TextField
-              className="mt-2"
-              fullWidth
-              multiline
-              InputProps={{
-                disableUnderline: true
-              }}
+          </div>
+          <div class="form-group">
+            <Control.textarea
+              className="form-control pl-0 border-0"
+              model="newMail.content"
             />
-          </Field>
+          </div>
         </Form>
       </div>
     );

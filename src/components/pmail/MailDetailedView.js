@@ -20,8 +20,13 @@ class MailDetailedView extends Component {
           <div className="d-flex flex-column w-100">
             <div className="pl-3">
               <div className="d-flex justify-content-between ">
-                <div className="font-weight-bold">email</div>
-                <div>
+                <div className="font-weight-bold">{SelectedItem.Email}</div>
+                <div
+                  style={{
+                    height: "20px",
+                    marginTop: "-15px"
+                  }}
+                >
                   <IconButton>
                     <Icon>reply</Icon>
                   </IconButton>

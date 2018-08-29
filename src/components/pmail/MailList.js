@@ -11,7 +11,7 @@ class MailList extends Component {
     const CurrentListItems = MailList.inbox;
 
     return (
-      <ListGroup flush>
+      <ListGroup className="mb-4" flush>
         {CurrentListItems.map((ListItem, index) => (
           <ListGroupItem
             key={index}
