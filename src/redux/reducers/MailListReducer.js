@@ -94,7 +94,7 @@ const initState = {
 
 export default (state = initState, action) => {
   switch (action.type) {
-    case actions.LOAD_LIST:
+    case actions.ADD_ITEM:
       break;
 
     default:

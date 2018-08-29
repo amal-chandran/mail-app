@@ -9,6 +9,7 @@ import {
   NavLink
 } from "reactstrap";
 import Avatar from "@material-ui/core/Avatar";
+import Logo from "./../assets/logo.svg";
 
 /**
  * Base Layout
@@ -69,7 +70,10 @@ export class MainNav extends Component {
   render() {
     return (
       <Navbar color="dark" dark expand="md">
-        <NavbarBrand href="/">Mail App</NavbarBrand>
+        <NavbarBrand href="/">
+          <img src={Logo} alt="Logo" style={{ maxHeight: "40px" }} srcset="" />
+          <span className="ml-2">Mail App</span>
+        </NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>

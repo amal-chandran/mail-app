@@ -23,6 +23,10 @@ class ComposeMail extends Component {
     this.setState({ open: false });
   };
 
+  handleSend = () => {
+    this.setState({ open: false });
+  };
+
   render() {
     const { classes } = this.props;
     return (

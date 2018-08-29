@@ -14,7 +14,7 @@ export default class PageMail extends Component {
 
     return (
       <div>
-        <Row>
+        <Row className="mr-0">
           <Col style={{ maxWidth: "15rem" }}>
             <NavMailMain />
           </Col>
